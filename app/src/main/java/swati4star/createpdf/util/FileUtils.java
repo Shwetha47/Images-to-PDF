@@ -228,15 +228,13 @@ public class FileUtils {
     public String getFileName(Uri uri) {
         String fileName = null;
         String scheme = uri.getScheme();
-
-        if (scheme == null)
-            return null;
+         Cursor cursor = null;
 
         if (scheme.equals("file")) {
             return uri.getLastPathSegment();
         } else if (scheme.equals("content")) {
-            Cursor cursor = mContext.getContentResolver().query(uri, null, null, null, null);
-
+             cursor = mContext.getContentResolver().query(uri, null, null, null, null);
+        }
             if (cursor != null) {
                 if (cursor.getCount() != 0) {
                     int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Files.FileColumns.DISPLAY_NAME);
@@ -245,7 +243,7 @@ public class FileUtils {
                 }
                 cursor.close();
             }
-        }
+        
 
         return fileName;
     }
