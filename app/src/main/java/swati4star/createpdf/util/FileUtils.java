@@ -244,9 +244,9 @@ public class FileUtils {
                     cursor.moveToFirst();
                     fileName = cursor.getString(columnIndex);
                 }
-                cursor.close();
             }
         
+        cursor.close();
 
         return fileName;
     }
