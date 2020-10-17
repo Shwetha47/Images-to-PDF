@@ -229,6 +229,9 @@ public class FileUtils {
         String fileName = null;
         String scheme = uri.getScheme();
          Cursor cursor = null;
+        
+        if (scheme == null)
+            return null;
 
         if (scheme.equals("file")) {
             return uri.getLastPathSegment();
